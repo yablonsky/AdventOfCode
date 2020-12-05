@@ -1,12 +1,8 @@
-def  main(raw_data):
-    processed_data = (p.split() for p in raw_data.split('\n\n'))
-    processed_data = [dict(f.split(':') for f in p) for p in processed_data]
+def count_valid_passports(input_file):
+    data = (p.split() for p in open(input_file).read().split('\n\n'))
+    data = (dict(f.split(':') for f in p) for p in data)
 
-    return count_valid_passports(processed_data)
-
-
-def count_valid_passports(passports):
-    return sum(validate_passport(p) for p in passports)
+    return sum(validate_passport(p) for p in data)
 
 
 def validate_passport(passport):
@@ -25,4 +21,4 @@ def validate_passport(passport):
     )
 
 
-print(main(open('input-04.txt').read()))
+assert count_valid_passports('input-04.txt') == 158

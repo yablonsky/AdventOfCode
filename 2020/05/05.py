@@ -13,3 +13,6 @@ def find_my_seat(input_file):
             return a + 1
         if b - i > seats[mid]:
             return b - 1
+
+
+assert find_my_seat('input-05.txt') == 559
